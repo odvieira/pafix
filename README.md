@@ -1,12 +1,10 @@
 # Shell script that sets up pulseaudio to fix problems with Discord, Skype and Spotify
 ### SOURCE: https://wiki.debian.org/PulseAudio (stuttering audio topic)
 ### IMPORTANT:
-#### DON'T USE SPACES BETWEEN '=' AND A VALUE
-#### REMOVE ';' AND '#' OF THE SETTING YOU WANT TO MAKE IT ACTIVE
+#### DON'T USE SPACES BETWEEN '=' AND A VALUE. REMOVE ';' AND '#' OF THE SETTING YOU WANT TO MAKE IT ACTIVE.
 
 ## Stuttering and audio interruptions
-#### If a low-power machine stutters (audio breaks up), you can try adding the
-#### following to /etc/pulse/daemon.conf:
+#### If a low-power machine stutters (audio breaks up), you can try adding the following to /etc/pulse/daemon.conf:
 high-priority=no
 nice-level=-1
 realtime-scheduling=yes
