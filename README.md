@@ -1,4 +1,4 @@
-# Setting up linux pulseaudio to fix problems with Discord, Skype and Spotify
+# Shell script that sets up pulseaudio to fix problems with Discord, Skype and Spotify
 ### SOURCE: https://wiki.debian.org/PulseAudio (stuttering audio topic)
 ### IMPORTANT:
 #### DON'T USE SPACES BETWEEN '=' AND A VALUE
