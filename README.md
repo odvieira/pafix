@@ -2,7 +2,7 @@
 ### SOURCE: https://wiki.debian.org/PulseAudio (stuttering audio topic)
 ### IMPORTANT:
 #### DON'T USE SPACES BETWEEN '=' AND A VALUE
-#### REMOVE ; AND # OF THE SETTING YOU WANT TO MAKE IT ACTIVE
+#### REMOVE ';' AND '#' OF THE SETTING YOU WANT TO MAKE IT ACTIVE
 
 ## Stuttering and audio interruptions
 #### If a low-power machine stutters (audio breaks up), you can try adding the
