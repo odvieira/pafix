@@ -1,0 +1,3 @@
+#!/bin/sh
+rm -rf ${HOME}/.local/bin/pulsefix ${HOME}/.local/share/pulsefix
+echo "All done!\n"

@@ -1,11 +1,19 @@
 #!/bin/sh
 dir="./files/pulsefix"
-mkdir ${dir}
+
+if [ ! -d ${dir} ]; then
+    mkdir ${dir};
+fi
+
 cp pulsefix ${dir}/
 cp -r py ${dir}/
 cp -r bckp ${dir}/
 cp -r tmp ${dir}/
-tar -cjf ${dir}0 -C ./files
+
+cd ./files
+tar -cjf pulsefix.tar.bz2 pulsefix
+cd ./..
+
 git add -A
 git commit -a
 git push -u

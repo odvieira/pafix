@@ -25,4 +25,4 @@ while [ $var -ne 0 ] do
 done
 echo"\nCleaning temp files...\n"
 sudo rm -rf ./tmp/*
-echo"Successful done!"
+echo"Successful done!\n"
