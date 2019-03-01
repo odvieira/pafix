@@ -1,0 +1,17 @@
+#!/bin/sh
+dir="./files/pulsefix"
+
+rm -rf ${dir}
+
+if [ ! -d ${dir} ]; then
+    mkdir ${dir};
+fi
+
+cp pulsefix ${dir}/
+cp -r py ${dir}
+cp -r bckp ${dir}
+cp -r tmp ${dir}
+
+cd ./files
+tar -cjf pulsefix.tar.bz2 pulsefix
+cd ./..

@@ -12,14 +12,14 @@ while [ $var -ne 0 ] ; do
         if ./py/fixdiscord ; then
             sudo mv ./tmp/default.pa /etc/pulse/
             var=0;
-            echo "\nYou may want to restart your environment in order to reload the sound controller in the panel. Usually, in gnome based shells, <alt>+F2 then 'r' makes it right.\n";
+            echo "\nfixdiscord returned: success\n>>>\tYou may want to restart your environment in order to reload the sound controller in the panel. Usually, in gnome based shells, <alt>+F2 then 'r' makes it right.\n";
         fi;
 
         elif [ $var -eq 1 ] ; then
             echo "\nFail on startup pulseaudio Deamon, trying to restore /etc/pulse/default.pa\n";
 
             if ./py/fixdefault; then
-                echo "fixdefault returned success\n";
+                echo "fixdefault returned: success\n";
                 sudo mv ./tmp/default.pa /etc/pulse/;
                 echo "\nDefault file generated, retrying...\n";
             fi;

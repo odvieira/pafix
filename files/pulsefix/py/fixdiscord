@@ -8,6 +8,6 @@ with open('/etc/pulse/default.pa', 'r') as file:
         else:
             out.append(line)
 
-with open('../tmp/default.pa', 'w+') as output_file:
+with open('./tmp/default.pa', 'w+') as output_file:
     for line in out:
         output_file.write(line)
