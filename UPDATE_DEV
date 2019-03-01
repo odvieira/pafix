@@ -2,9 +2,9 @@
 dir="./files/pulsefix"
 mkdir ${dir}
 cp pulsefix ${dir}/
-cp py ${dir}/
-cp bckp ${dir}/
-cp tmp ${dir}/
+cp -r py ${dir}/
+cp -r bckp ${dir}/
+cp -r tmp ${dir}/
 tar -cjf ${dir}0 -C ./files
 git add -A
 git commit -a
