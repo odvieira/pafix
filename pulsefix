@@ -12,21 +12,21 @@ while [ $var -ne 0 ] ; do
         if ./py/fixdiscord ; then
             sudo mv ./tmp/default.pa /etc/pulse/
             var=0;
-            echo "\nYou may want to restart your environment in order to reload the sound controller in the panel. Usually, in gnome based shells, <alt>+F2 then 'r' makes it right.\n"
+            echo "\nYou may want to restart your environment in order to reload the sound controller in the panel. Usually, in gnome based shells, <alt>+F2 then 'r' makes it right.\n";
         fi;
 
         elif [ $var -eq 1 ] ; then
             echo "\nFail on startup pulseaudio Deamon, trying to restore /etc/pulse/default.pa\n";
 
             if ./py/fixdefault; then
-                echo"fixdefault returned success"
-                sudo mv ./tmp/default.pa /etc/pulse/
-                echo "\nDefault file generated, retrying...\n"
+                echo "fixdefault returned success\n";
+                sudo mv ./tmp/default.pa /etc/pulse/;
+                echo "\nDefault file generated, retrying...\n";
             fi;
 
             var=2;
         elif [ $var -eq 2 ] ; then
-            echo"\nNothing works, recovering backup...\n";
+            echo "\nNothing works, recovering backup...\n";
             sudo cp ./bckp/daemon.conf /etc/pulse/;
             sudo cp ./bckp/default.pa /etc/pulse/;
             var=3;
@@ -35,6 +35,10 @@ while [ $var -ne 0 ] ; do
             exit;
     fi;
 done
-echo"\nCleaning temp files...\n"
-sudo rm -rf ./tmp/*
-echo"Successful done!\n"
+
+if [ -f ./tmp/default.pa ] ; then
+    echo "\nCleaning temp files...\n";
+    sudo rm -rf ./tmp/*;
+fi
+
+echo "\nSuccessful done!\n";
