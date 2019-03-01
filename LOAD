@@ -6,11 +6,14 @@ rm -rf ${dir}
 if [ ! -d ${dir} ]; then
     mkdir ${dir};
 fi
+if [ ! -d "./tmp" ]; then
+    mkdir "./tmp";
+fi
 
 cp pulsefix ${dir}/
-cp -r py ${dir}
-cp -r bckp ${dir}
-cp -r tmp ${dir}
+cp -r ./py ${dir}
+cp -r ./bckp ${dir}
+cp -r ./tmp ${dir}
 
 #cd ./files
 #tar -cjf pulsefix.tar.bz2 pulsefix
