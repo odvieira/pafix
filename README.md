@@ -1,7 +1,7 @@
-#Pulsefix - Pulseaudio fix for Discord Users
+# Pulsefix - Pulseaudio fix for Discord Users
 #### Shell script that sets up pulseaudio to fix problems with Discord, Skype and Spotify
 ### SOURCE: https://wiki.debian.org/PulseAudio (stuttering audio topic)
-##The Following setting will be applied
+## The Following setting will be applied
 ### Stuttering and audio interruptions
 #### If a low-power machine stutters (audio breaks up), you can try adding the following to /etc/pulse/daemon.conf:
 high-priority=no
