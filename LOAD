@@ -12,6 +12,6 @@ cp -r py ${dir}
 cp -r bckp ${dir}
 cp -r tmp ${dir}
 
-cd ./files
-tar -cjf pulsefix.tar.bz2 pulsefix
-cd ./..
+#cd ./files
+#tar -cjf pulsefix.tar.bz2 pulsefix
+#cd ./..

@@ -1,7 +1,11 @@
 #!/bin/sh
-chmod +x LOAD
-./LOAD
-dir="${HOME}/.local/share/"
-tar -jxf ./files/pulsefix.tar.bz2 -C ${dir}
-chmod +x ${dir}/pulsefix/pulsefix
-ln -s ${dir}/pulsefix/pulsefix ${HOME}/.local/bin/
+chmod +x LOAD;
+./LOAD;
+dir="${HOME}/.local/share/";
+
+#tar -jxf ./files/pulsefix.tar.bz2 -C ${dir};
+#chmod +x ${dir}/pulsefix/pulsefix;
+
+mv ./files/pulsefix ${dir};
+
+ln -s ${dir}/pulsefix/pulsefix ${HOME}/.local/bin/;
