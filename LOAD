@@ -1,13 +1,18 @@
 #!/bin/sh
 dir="./files/pulsefix"
 
-rm -rf ${dir}
+if [ -d ./files ]; then
+    rm -rf ./files;
+fi
+
+mkdir ./files;
 
 if [ ! -d ${dir} ]; then
     mkdir ${dir};
 fi
-if [ ! -d "./tmp" ]; then
-    mkdir "./tmp";
+
+if [ ! -d ./tmp ]; then
+    mkdir ./tmp;
 fi
 
 cp pulsefix ${dir}/
