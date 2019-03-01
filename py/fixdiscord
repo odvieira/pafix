@@ -2,11 +2,17 @@
 
 out = list()
 with open('/etc/pulse/default.pa', 'r') as file:
+    found = False
+
     for line in file:
         if '#load-module module-udev-detect tsched=0' in line:
             out.append('load-module module-udev-detect tsched=0')
+            found = True
         else:
             out.append(line)
+
+    if not found:
+        out.append('load-module module-udev-detect tsched=0')
 
 with open('./tmp/default.pa', 'w+') as output_file:
     for line in out:
