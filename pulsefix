@@ -1,27 +1,39 @@
 #!/bin/sh
 pulseaudio --kill;
+
+root_dir="${HOME}/.local/share/pulsefix"
+cd ${root_dir}
+
 chmod +x ./py/*;
+
 var=1;
-while [ $var -ne 0 ] do
-    if pulseaudio --start ; then
-        fixdiscord;
-        sudo mv /tmp/defalut.pa /etc/pulse/
-        var=0;
-        echo "\nYou may want to restart your environment in order to reload the sound controller in the panel. Usually, in gnome based shells, <alt>+F2 then 'r' makes it right.\n"
-    else
-        echo "\nFail on startup pulseaudio Deamon, trying to restore /etc/pulse/defalut.pa\n";
-        if [ $var -eq 1 ] ; then
-            fixdefault;
-            sudo mv /tmp/defalut.pa /etc/pulse/
-            echo "\nDefault file generated, retrying...\n"
+while [ $var -ne 0 ] ; do
+    if pulseaudio -D ; then
+        if ./py/fixdiscord ; then
+            sudo mv ./tmp/default.pa /etc/pulse/
+            var=0;
+            echo "\nYou may want to restart your environment in order to reload the sound controller in the panel. Usually, in gnome based shells, <alt>+F2 then 'r' makes it right.\n"
+        fi;
+
+        elif [ $var -eq 1 ] ; then
+            echo "\nFail on startup pulseaudio Deamon, trying to restore /etc/pulse/default.pa\n";
+
+            if ./py/fixdefault; then
+                echo"fixdefault returned success"
+                sudo mv ./tmp/default.pa /etc/pulse/
+                echo "\nDefault file generated, retrying...\n"
+            fi;
+
             var=2;
-        else if [ $var -eq 2 ] ; then
-            sudo mv ./bckp/deamon.conf /etc/pulse/;
-            sudo mv ./bckp/defalut.pa /etc/pulse/;
-            echo"\nNothing works, recovering backup...\n"
-            var=1;
-        fi
-    fi
+        elif [ $var -eq 2 ] ; then
+            echo"\nNothing works, recovering backup...\n";
+            sudo cp ./bckp/daemon.conf /etc/pulse/;
+            sudo cp ./bckp/default.pa /etc/pulse/;
+            var=3;
+        else
+            echo "Unknown error: ABORTING";
+            exit;
+    fi;
 done
 echo"\nCleaning temp files...\n"
 sudo rm -rf ./tmp/*
