@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+out = list()
+with open('/etc/pulse/default.pa', 'r') as file:
+    for line in file:
+        if '#load-module module-udev-detect tsched=0' in line:
+            out.append('load-module module-udev-detect tsched=0')
+        else:
+            out.append(line)
+
+with open('../tmp/default.pa', 'w+') as output_file:
+    for line in out:
+        output_file.write(line)
