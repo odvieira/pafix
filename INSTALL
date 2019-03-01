@@ -1,0 +1,6 @@
+#!/bin/sh
+dir="${HOME}/.local/share/pulsefix"
+mkdir ${dir}
+tar -jxf ./files/pulsefix.tar.bz2 -C ${dir}
+chmod +x ${dir}/pulsefix
+ln -s ${dir}/pulsefix ${HOME}/.local/bin/

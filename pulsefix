@@ -23,3 +23,6 @@ while [ $var -ne 0 ] do
         fi
     fi
 done
+echo"\nCleaning temp files...\n"
+sudo rm -rf ./tmp/*
+echo"Successful done!"
