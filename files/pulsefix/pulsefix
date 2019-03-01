@@ -1,0 +1,28 @@
+#!/bin/sh
+pulseaudio --kill;
+chmod +x ./py/*;
+var=1;
+while [ $var -ne 0 ] do
+    if pulseaudio --start ; then
+        fixdiscord;
+        sudo mv /tmp/defalut.pa /etc/pulse/
+        var=0;
+        echo "\nYou may want to restart your environment in order to reload the sound controller in the panel. Usually, in gnome based shells, <alt>+F2 then 'r' makes it right.\n"
+    else
+        echo "\nFail on startup pulseaudio Deamon, trying to restore /etc/pulse/defalut.pa\n";
+        if [ $var -eq 1 ] ; then
+            fixdefault;
+            sudo mv /tmp/defalut.pa /etc/pulse/
+            echo "\nDefault file generated, retrying...\n"
+            var=2;
+        else if [ $var -eq 2 ] ; then
+            sudo mv ./bckp/deamon.conf /etc/pulse/;
+            sudo mv ./bckp/defalut.pa /etc/pulse/;
+            echo"\nNothing works, recovering backup...\n"
+            var=1;
+        fi
+    fi
+done
+echo"\nCleaning temp files...\n"
+sudo rm -rf ./tmp/*
+echo"Successful done!"
